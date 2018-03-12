@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<title>Hello</title>
+</head>
+<body>
+	<div id="app">
+		<transition name="fade">
+			<h1 v-if="show">{{message}}</h1>
+		</transition>
+	</div>
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				show:true,
+				message:''
+			}
+		});
+		var arr = ['你好','Hello','Bonjou','Hallo','こんにちは','Γειάσου','Hola'];
+		var i = 0;
+		function showAndHide(){
+
+			app.message = arr[i];
+			i++;
+			if (i ===arr.length) i = 0;
+			app.show = !app.show;
+		    setTimeout("showAndHide()",2000);	
+		}
+		showAndHide()
+	</script>
+
+</body>
+</html>
+
